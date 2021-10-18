@@ -16,55 +16,144 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
+        <!-- Appel de la Feuille de style minifiée De La librairie Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Appel de la Feuille de style minifiée De l'extension Datepicker -->
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        <!-- Appel de la Bibliothèque Font Awesome -->
+        <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Appel de la police Montserrat et Open Sans -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300" rel="stylesheet">
+        <!-- Feuille de style Personnalisée -->
+        <link rel="stylesheet"  href="style.css">
+        <link rel="stylesheet"  href="modelStyle.css">
+
         <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
+            body{
+                background-color: #e9ebee;              
+                font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+                font-size: 16px;
+                
+                margin: 26px auto;
+                max-width: 1014px;
+           
+            }
+            label{
+                text-align: center;
+                font-family: Garamond, serif;
+                color:white;
+                font-size: 23px;
+            }    
         </style>
+
+       
         
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="js/main.js"></script>-->
     </head>
     <body>  
         <div class ="row">
-            <div class="col-lg-1 ">
+            <div class="col-lg-2 ">
           
             </div>
-            <div class="col-lg-8 ">
+            
 
-                <h1>Formumaire Personne</h1>
-                <div class="container mt-3">
+            <div class="col-lg-8  ">
+                
+
+                
+            <div class="mt-4 p-2  text-white rounded" style="background-color: #46a8ab;">
+
+                
+                <div class="container mt-6">
+                    <h4 style="font-family: Georgia, serif;color: grey;text-align: center;color:#0e0adc ;"> Saisie d'une fiche "PERSONNE"</h4>
                     
                     <form action="">
-                    <div class="mb-3 mt-3">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                    </div>
-                    <div class="form-check mb-3">
-                        <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <div class="mb-3 mt-3">
+                            <label for="email">Nom:</label>
+                            <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom">
+                        </div>
+
+                        <div class="mb-3 mt-3">
+                            <label for="email">Prénom:</label>
+                            <input type="text" class="form-control" id="prenom" placeholder="Entrer prénom" name="prenom">
+                        </div>
+
+                        <div class="mb-3 mt-3">
+                            <label for="email">Adresse:</label>
+                            <input type="text" class="form-control" id="adresse" placeholder="Entrer l'adresse" name="adresse">
+                        </div>
+                        
+                        
+
+                        <div class="form-group">
+                            <label for="email">Date de naissance:</label>
+                            <div class=" datepicker date input-group shadow-sm">
+                                <input type="text" placeholder="Choisir une date" class="form-control py-4 px-4" id="datede">
+                                <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-calendar"></i></span></div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="mb-3 mt-3">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Entrer email" name="email">
+                        </div>
+
+                       
+
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        
                     </form>
                 </div>
+                <button id="myBtn" onclick="ValiderFormulaire()" type="submit" class="btn btn-success" style="background-color: #0073cc;">Valider</button>
+
+                <div id="MessERROR">
+
+
+                </div>
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            
+                        </div>
+
+                        <div id ="modalBody"class="modal-body">
+                            
+                        </div>
+
+                    </div>
+                
+                </div>
+                           
 
           
             </div>
+          
+            </div>
+
             <div class="col-lg-3 ">
           
             </div>
 
         </div>
+
+            <!-- Extension jquery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <!-- Extension DATEPICKER -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <!-- Noyau JavaScript de Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Script pour activation du datepicker -->
+        
+        <script src="Formulaire.js"></script>
 
         
 
