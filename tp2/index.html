@@ -35,7 +35,8 @@
                 font-size: 16px;
                 
                 margin: 26px auto;
-                max-width: 1014px;
+                max-width: 1250px;
+                height: auto;
            
             }
             label{
@@ -58,86 +59,73 @@
 
             <div class="col-lg-8  ">
                 
+            
+                <div class="mt-4 p-2  text-white rounded" style="background-color: #46a8ab;height: auto;padding-bottom: 6px;">
 
-                
-            <div class="mt-4 p-2  text-white rounded" style="background-color: #46a8ab;">
-
-                
-                <div class="container mt-6">
-                    <h4 style="font-family: Georgia, serif;color: grey;text-align: center;color:#0e0adc ;"> Saisie d'une fiche "PERSONNE"</h4>
                     
-                    <form action="">
-
-                        <div class="mb-3 mt-3">
-                            <label for="email">Nom:</label>
-                            <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom">
-                        </div>
-
-                        <div class="mb-3 mt-3">
-                            <label for="email">Prénom:</label>
-                            <input type="text" class="form-control" id="prenom" placeholder="Entrer prénom" name="prenom">
-                        </div>
-
-                        <div class="mb-3 mt-3">
-                            <label for="email">Adresse:</label>
-                            <input type="text" class="form-control" id="adresse" placeholder="Entrer l'adresse" name="adresse">
-                        </div>
+                    <div class="container mt-6">
+                        <h4 style="font-family: Georgia, serif;color: grey;text-align: center;color:#0e0adc ;"> Saisie d'une fiche "PERSONNE"</h4>
                         
-                        
+                        <form action="">
 
-                        <div class="form-group">
-                            <label for="email">Date de naissance:</label>
-                            <div class=" datepicker date input-group shadow-sm">
-                                <input type="text" placeholder="Choisir une date" class="form-control py-4 px-4" id="datede">
-                                <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-calendar"></i></span></div>
+                            <div class="mb-3 mt-3">
+                                <label for="email">Nom:</label>
+                                <input type="text" class="form-control" id="nom" placeholder="Entrer nom" name="nom">
                             </div>
-                        </div>
+
+                            <div class="mb-3 mt-3">
+                                <label for="email">Prénom:</label>
+                                <input type="text" class="form-control" id="prenom" placeholder="Entrer prénom" name="prenom">
+                            </div>
+
+                            <div class="mb-3 mt-3">
+                                <label for="adress">Adresse:</label>
+                                <input type="adress" class="form-control" id="adresse" placeholder="Entrer l'adresse" name="adresse">
+                            </div>
+                            
+                            
+
+                            <div class="form-group">
+                                <label for="email">Date de naissance:</label>
+                                <div class=" datepicker date input-group shadow-sm">
+                                    <input type="text" placeholder="Choisir une date" class="form-control py-4 px-4" id="datede">
+                                    <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-calendar"></i></span></div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="mb-3 mt-3">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Entrer email" name="email">
+                            </div>
+
                         
 
-                        <div class="mb-3 mt-3">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Entrer email" name="email">
-                        </div>
-
-                       
-
-                        <div class="form-check mb-3">
-                            <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                            </label>
-                        </div>
-                        
-                    </form>
-                </div>
-                <button id="myBtn" onclick="ValiderFormulaire()" type="submit" class="btn btn-success" style="background-color: #0073cc;">Valider</button>
-
-                <div id="MessERROR">
-
-
-                </div>
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label" style="margin-left: 8px;">
+                                <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                                </label>
+                            </div>
                             
-                        </div>
-
-                        <div id ="modalBody"class="modal-body">
-                            
-                        </div>
-
+                        </form>
                     </div>
-                
-                </div>
-                           
+                    
+                    <button id="myBtn" onclick="ValiderFormulaire()" type="submit" class="btn btn-success" style="background-color: #0073cc;margin-left: 12px;position: inherit;
+                    width: 181px;">Valider</button>
 
+                
+                    <div id ="messageSection" class="form-group" style="margin-top: 30px;display: none;">
+                        
+                        <textarea id="bodyModel" class="form-control" style="color: white;" rows="3"></textarea>
+                      </div>
+                
+                            
+
+            
+                </div>
+            </div>    
           
-            </div>
-          
-            </div>
+            
 
             <div class="col-lg-3 ">
           
@@ -145,7 +133,7 @@
 
         </div>
 
-            <!-- Extension jquery -->
+        <!-- Extension jquery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <!-- Extension DATEPICKER -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
