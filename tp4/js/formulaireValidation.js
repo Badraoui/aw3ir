@@ -152,11 +152,11 @@ function getlocalisation(){
     getLocation();
     showPosition;
 
-    import PostalAddress from 'https://cdn.skypack.dev/i18n-postal-address'
+    import PostalAddress from 'https://cdn.skypack.dev/i18n-postal-address';
     var PostalAddress = window.PostalAddress.default;
     var myAddress = new PostalAddress();
 
-    document.getElementById("adresse").textContent = myAddress;
+    document.getElementById("target").innerHTML = myAddress;
     
 }
 
