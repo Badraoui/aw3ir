@@ -147,16 +147,9 @@ function validateEmail(email) {
 
 
 function getlocalisation(){
-
-
+    
     getLocation();
     showPosition;
-
-    import PostalAddress from 'https://cdn.skypack.dev/i18n-postal-address';
-    var PostalAddress = window.PostalAddress.default;
-    var myAddress = new PostalAddress();
-
-    document.getElementById("target").innerHTML = myAddress;
     
 }
 
