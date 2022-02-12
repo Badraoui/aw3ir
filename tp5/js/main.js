@@ -10,12 +10,27 @@ window.onload = function () {
             formCityName: '',
 
             message: 'WebApp Loaded.',
-            messageForm: 'existe déjà',
+            messageForm: '',
 
             // liste des villes saisies, initialiser avec Paris
-            cityList: [{
-                name : 'Paris'
-            }],
+            cityList: [
+                {
+                    name : 'Paris',
+                },
+                {
+                    name : 'Marseille',
+                },
+                {
+                    name : 'Londres',
+                },
+                {
+                    name : 'Frankfurt',
+                },
+                {
+                    name : 'Amesterdam',
+                },
+            ],
+
 
             // cityWeather contiendra les données météo reçus par openWeatherMap
             cityWeather : null,
@@ -42,9 +57,9 @@ window.onload = function () {
             },
             addCity: function (event) {
                 event.preventDefault(); // pour ne pas recharger la page à la soumission du formulaire
-                // if(this.isCityExist(this.formCityName)){
-                //    this.messageForm = 'existe déjà';
-                //}else{
+                 if(this.isCityExist(this.formCityName)){
+                  this.messageForm = 'existe déjà';
+                }else{
                     this.cityList.push({name : this.formCityName});
 
                     // remise à zero du message affiché sous le formulaire
@@ -54,7 +69,8 @@ window.onload = function () {
                     this.formCityName = '';
 
                     console.log('formCityName:',this.formCityName);
-                // A compléter dans la suite du TP  
+                // A compléter dans la suite du TP 
+                } 
             },
 
           
@@ -75,6 +91,9 @@ window.onload = function () {
             }, 
             meteo : function (_city){
 
+                
+
+
                 this.cityWeatherLoading = true;
                 
             
@@ -92,18 +111,34 @@ window.onload = function () {
                         if(json.cod === 200){
                             // on met la réponse du webservice dans la variable cityWeather
                             app.cityWeather = json;
+
                             app.message = null;
+                            var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+app.cityWeather.coord.lat+","+app.cityWeather.coord.lon+"&zoom=12&size=597x300&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg";
+  
+                            document.querySelector("#map").innerHTML = `<img class="card-img-top" src='${img_url}' alt="Card image cap">`;
+                      
                         }else{
                             app.cityWeather = null;
                             app.message = 'Météo introuvable pour ' + _city.name 
                                             + ' (' + json.message+ ')';
                         }        
-                    }); 
+                    });
 
-                    getlocalisation();
+             
+
+
+                    
+
+                    
+            
+
+                
 
             }
             
         }
     });
 }
+
+
+
