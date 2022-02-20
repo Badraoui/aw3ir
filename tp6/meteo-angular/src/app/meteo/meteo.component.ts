@@ -4,7 +4,7 @@ import { MeteoItem } from '../meteoItem';
 @Component({
   selector: 'app-meteo',
   templateUrl: './meteo.component.html',
-  styleUrls: ['./meteo.component.css']
+  styleUrls: ['./meteo.component.scss']
 })
 export class MeteoComponent implements OnInit {
 
