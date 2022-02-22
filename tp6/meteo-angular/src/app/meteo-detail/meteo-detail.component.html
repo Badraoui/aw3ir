@@ -1,7 +1,7 @@
 <!-- meteo de la ville selectionnée -->
 
 <div *ngIf="meteo && meteo.cod === 200 ">
-
+    
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -50,14 +50,215 @@
   
     {{meteo.message}} (erreur {{meteo.cod}})
   </div>
-  
-  
+  <hr>
+  <h4 style="color: black;">la météo sur les 5 prochains jours</h4>
+  <div class="mt-4 p-2  text-white rounded shadow-lg p-3 mb-5 bg-white rounded" style="background-color: #ffff; height: auto;padding-bottom: 6px;width: 1382px;margin-left: -41px;"> 
+  <div class ="row">
+      <div class="col-lg-2">
+        <div class="card" style="width:300px; margin: 0 auto" v-if="meteo">
+            <div class="card-header">
+              {{meteo.name}} @{{meteo.dt | date:'H:mm'}}
+            </div>
+          
+            <div class="card-body">
+              <h5 class="card-title">
+                <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+                {{meteo.main.temp}}
+                <i class="wi wi-celsius"></i>
+              </h5>
+              <p class="card-text">{{meteo.weather[0].description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="wi wi-cloud"></i> Nuage: {{meteo.clouds.all}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-humidity"></i> Humidité: {{meteo.main.humidity}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+            </ul>
+          </div>
+
+      </div>
+
+      <div class="col-lg-2">
+        <div class="card" style="width:300px; margin: 0 auto" v-if="meteo">
+            <div class="card-header">
+              {{meteo.name}} @{{meteo.dt | date:'H:mm'}}
+            </div>
+          
+            <div class="card-body">
+              <h5 class="card-title">
+                <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+                {{meteo.main.temp}}
+                <i class="wi wi-celsius"></i>
+              </h5>
+              <p class="card-text">{{meteo.weather[0].description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="wi wi-cloud"></i> Nuage: {{meteo.clouds.all}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-humidity"></i> Humidité: {{meteo.main.humidity}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+            </ul>
+          </div>
+
+      </div>
+
+      <div class="col-lg-2">
+        <div class="card" style="width:300px; margin: 0 auto" v-if="meteo">
+            <div class="card-header">
+              {{meteo.name}} @{{meteo.dt | date:'H:mm'}}
+            </div>
+          
+            <div class="card-body">
+              <h5 class="card-title">
+                <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+                {{meteo.main.temp}}
+                <i class="wi wi-celsius"></i>
+              </h5>
+              <p class="card-text">{{meteo.weather[0].description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="wi wi-cloud"></i> Nuage: {{meteo.clouds.all}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-humidity"></i> Humidité: {{meteo.main.humidity}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+            </ul>
+          </div>
+
+      </div>
+
+      <div class="col-lg-2">
+        <div class="card" style="width:300px; margin: 0 auto" v-if="meteo">
+            <div class="card-header">
+              {{meteo.name}} @{{meteo.dt | date:'H:mm'}}
+            </div>
+          
+            <div class="card-body">
+              <h5 class="card-title">
+                <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+                {{meteo.main.temp}}
+                <i class="wi wi-celsius"></i>
+              </h5>
+              <p class="card-text">{{meteo.weather[0].description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="wi wi-cloud"></i> Nuage: {{meteo.clouds.all}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-humidity"></i> Humidité: {{meteo.main.humidity}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+            </ul>
+          </div>
+
+      </div>
+
+      <div class="col-lg-2">
+        <div class="card" style="width:300px; margin: 0 auto" v-if="meteo">
+            <div class="card-header">
+              {{meteo.name}} @{{meteo.dt | date:'H:mm'}}
+            </div>
+          
+            <div class="card-body">
+              <h5 class="card-title">
+                <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+                {{meteo.main.temp}}
+                <i class="wi wi-celsius"></i>
+              </h5>
+              <p class="card-text">{{meteo.weather[0].description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="wi wi-cloud"></i> Nuage: {{meteo.clouds.all}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-humidity"></i> Humidité: {{meteo.main.humidity}}%
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+              <li class="list-group-item">
+                <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} // Date au format Timestamp à transformer au format 'H:mm'
+              </li>
+            </ul>
+          </div>
+
+      </div>
+
+      
+    </div>
+  </div>
+   
+<!-- commentaire particulier 
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let tmp of Meteo5dayData ">
+                    <div class="col-lg-1">
+                        <div class="card bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Temp</div>
+                            <div class="card-body">
+                            <h5 class="card-title">Temperature</h5>
+                            <p class="card-text">{{tmp}}</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+  --> 
+
   <hr> 
 
-<div *ngIf="result && result.cod === 200 " style="color: black;">
 
-     {{result | json}}
     
-</div>
+
+    
+    
+
 
  

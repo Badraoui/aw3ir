@@ -9,12 +9,13 @@ import { DatePipe } from '@angular/common';
   selector: 'app-meteo-detail',
   templateUrl: './meteo-detail.component.html',
   styleUrls: ['./meteo-detail.component.scss']
+
 })
 export class MeteoDetailComponent implements OnInit {
 
   meteo : any;
   result :any;
-
+  Meteo5dayData: any[]= [];
   constructor(
     private route: ActivatedRoute,
     private meteoService: MeteoService,
@@ -23,6 +24,8 @@ export class MeteoDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getMeteo();
+    this.get5daysMeteo();
+    console.log(this.Meteo5dayData);
   }
 
   getMeteo(): void {
@@ -43,10 +46,19 @@ export class MeteoDetailComponent implements OnInit {
     console.log('get5daysMeteo',name);
     if(name)
     {
-      this.meteoService.get5daysMeteo(name)
-      .then(houssem => this.result = houssem)
-      .catch(fail => this.result = fail);
+      this.meteoService.getData(name).subscribe(data =>{
+         for ( let i=0 ; i < data["list"].length ; i++ ){
+             
+          this.Meteo5dayData[i]=data["list"][i]["main"]['temp']-271;
+
+         }
+       // console.log(data["list"][0]["main"]['temp']-271);
+      })
+      //this.meteoService.get5daysMeteo(name)
+      //.then(houssem => this.result = houssem)
+      //.catch(fail => this.result = fail);
     }
   }
+  
 
 }

@@ -1,9 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MeteoService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
+
+
+
 
 
   getMeteo(name: string): Promise<any> {
@@ -34,6 +39,9 @@ export class MeteoService {
   get5daysMeteo(name: string): Promise<any> {
     console.log('from service', name);
 
+
+
+
     return fetch('https://api.openweathermap.org/data/2.5/forecast/?q='+ name +'&lang=fr&appid=cf16761d3c10ad23572e697143cac7b5')
       .then(function (response) {
         return response.json();
@@ -53,5 +61,11 @@ export class MeteoService {
 
       });
 
+  }
+
+
+  getData ( name : any ) :Observable <any> {
+
+   return this.http.get<any>('https://api.openweathermap.org/data/2.5/forecast/?q='+ name +'&lang=fr&appid=cf16761d3c10ad23572e697143cac7b5')
   }
 }

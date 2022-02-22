@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { MeteoComponent } from './meteo/meteo.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MeteoDetailComponent } from './meteo-detail/meteo-detail.component';
+import { HttpClientModule} from '@angular/common/http'
+import { MeteoService } from './services/meteo.service';
 
 const appRoutes: Routes = [
   { 
@@ -32,13 +34,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule, ReactiveFormsModule,
+    AppRoutingModule,FormsModule, ReactiveFormsModule,HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [MeteoService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
