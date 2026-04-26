@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future AI Engineer 🧠🏎️</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Poppins, Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, .22), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(255, 0, 128, .24), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(255, 214, 10, .18), transparent 30%),
+        linear-gradient(135deg, #050816, #111f4d 50%, #240046);
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      min-height: 100dvh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      transform: perspective(600px) rotateX(62deg) translateY(160px) scale(1.4);
+      animation: gridMove 3s linear infinite;
+      opacity: .8;
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0; }
+      to { background-position: 0 42px; }
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      opacity: .85;
+      animation: floatOrb 7s ease-in-out infinite alternate;
+    }
+
+    .orb.one { width: 110px; height: 110px; background: #00f5ff; top: 12%; left: 8%; box-shadow: 0 0 60px #00f5ff; }
+    .orb.two { width: 80px; height: 80px; background: #ff2bd6; right: 9%; top: 18%; box-shadow: 0 0 60px #ff2bd6; animation-delay: 1s; }
+    .orb.three { width: 70px; height: 70px; background: #ffd60a; left: 14%; bottom: 16%; box-shadow: 0 0 55px #ffd60a; animation-delay: 2s; }
+
+    @keyframes floatOrb {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(-35px) scale(1.1); }
+    }
+
+    .code-rain {
+      position: absolute;
+      top: -30px;
+      color: rgba(255,255,255,.35);
+      font-weight: 800;
+      font-size: 13px;
+      animation: rain 5s linear infinite;
+    }
+
+    .code-rain:nth-child(5) { left: 8%; animation-delay: .2s; }
+    .code-rain:nth-child(6) { left: 22%; animation-delay: 1.1s; }
+    .code-rain:nth-child(7) { left: 36%; animation-delay: 2s; }
+    .code-rain:nth-child(8) { left: 59%; animation-delay: .8s; }
+    .code-rain:nth-child(9) { left: 74%; animation-delay: 1.8s; }
+    .code-rain:nth-child(10) { left: 90%; animation-delay: 2.7s; }
+
+    @keyframes rain {
+      from { transform: translateY(-10vh); opacity: 0; }
+      15% { opacity: .8; }
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .card {
+      width: min(100%, 470px);
+      position: relative;
+      z-index: 5;
+      padding: 32px 25px;
+      border-radius: 34px;
+      text-align: center;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45), 0 0 50px rgba(0,245,255,.16);
+      animation: enter 1.1s ease both, neonCard 2.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(40px) scale(.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes neonCard {
+      from { box-shadow: 0 30px 90px rgba(0,0,0,.45), 0 0 38px rgba(0,245,255,.18); }
+      to { box-shadow: 0 30px 95px rgba(0,0,0,.45), 0 0 65px rgba(255,43,214,.28); }
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(0,245,255,.16);
+      border: 1px solid rgba(0,245,255,.35);
+      color: #dffcff;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 10vw, 62px);
+      line-height: 1;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .gradient-text {
+      display: block;
+      background: linear-gradient(90deg, #00f5ff, #fff, #ff2bd6, #ffd60a, #00f5ff);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+      from { background-position: 0% 50%; }
+      to { background-position: 400% 50%; }
+    }
+
+    .car {
+      font-size: 58px;
+      margin: 15px 0;
+      animation: carShake .55s infinite alternate ease-in-out;
+      filter: drop-shadow(0 0 22px rgba(0,245,255,.85));
+    }
+
+    @keyframes carShake {
+      from { transform: translateX(-5px) rotate(-2deg); }
+      to { transform: translateX(5px) rotate(2deg); }
+    }
+
+    .message {
+      color: rgba(255,255,255,.9);
+      line-height: 1.7;
+      font-size: 16px;
+      margin-bottom: 22px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      padding: 13px 8px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    .stat:nth-child(2) { animation-delay: .25s; }
+    .stat:nth-child(3) { animation-delay: .5s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      color: #00f5ff;
+    }
+
+    .stat span {
+      font-size: 12px;
+      opacity: .82;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 999px;
+      color: #050816;
+      background: linear-gradient(90deg, #00f5ff, #fff, #ffd60a);
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 18px 45px rgba(0,245,255,.24);
+      animation: buttonPulse 1.6s infinite;
+    }
+
+    @keyframes buttonPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.045); }
+    }
+
+    .footer {
+      min-height: 48px;
+      margin-top: 20px;
+      font-size: 15px;
+      color: rgba(255,255,255,.86);
+      transition: .35s ease;
+    }
+
+    .nitro {
+      position: fixed;
+      left: -120px;
+      top: var(--top);
+      z-index: 50;
+      font-size: 54px;
+      filter: drop-shadow(0 0 25px #00f5ff);
+      animation: nitroMove 1.45s ease-in forwards;
+      pointer-events: none;
+    }
+
+    @keyframes nitroMove {
+      from { transform: translateX(0) rotate(-4deg); }
+      to { transform: translateX(calc(100vw + 240px)) rotate(4deg); }
+    }
+
+    .spark {
+      position: fixed;
+      z-index: 60;
+      pointer-events: none;
+      animation: sparkFly 1.9s ease-out forwards;
+    }
+
+    @keyframes sparkFly {
+      from { transform: translate(-50%, -50%) scale(.5); opacity: 1; }
+      to { transform: translate(var(--x), var(--y)) scale(1.8) rotate(360deg); opacity: 0; }
+    }
+
+    .boss-mode {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      background: rgba(5,8,22,.42);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      pointer-events: none;
+    }
+
+    .boss-mode.show { display: grid; animation: fadeBoss 3s ease forwards; }
+
+    .boss-mode div {
+      font-size: clamp(34px, 11vw, 86px);
+      font-weight: 1000;
+      text-shadow: 0 0 35px #00f5ff, 0 0 50px #ff2bd6;
+      animation: bossPop .8s ease both;
+    }
+
+    @keyframes bossPop {
+      from { opacity: 0; transform: scale(.25) rotate(-10deg); }
+      to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    @keyframes fadeBoss {
+      0%, 75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 430px) {
+      .page { padding: 18px; }
+      .card { padding: 28px 20px; border-radius: 30px; }
+      .car { font-size: 50px; }
+      .stats { gap: 8px; }
+      .stat { padding: 12px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="grid"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <div class="code-rain">AI</div>
+    <div class="code-rain">0101</div>
+    <div class="code-rain">ML</div>
+    <div class="code-rain">DATA</div>
+    <div class="code-rain">BOT</div>
+    <div class="code-rain">GPU</div>
+
+    <section class="card">
+      <div class="badge">🧠 Future AI Engineer Mode</div>
+      <h1>Code. Train. <span class="gradient-text">Race.</span><br><span style="font-size:0.5em; opacity:0.9;">Asser aka Sigma</span></h1>
+      <div class="car">🏎️💨</div>
+      <p class="message">
+        For Asser, aka Sigma — the guy who dreams in algorithms, trains models like a boss, and plays Asphalt Legends Unite like every race is the final boss battle.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><strong>99%</strong><span>Nitro Energy</span></div>
+        <div class="stat"><strong>AI</strong><span>Brain Power</span></div>
+        <div class="stat"><strong>∞</strong><span>Speed Dreams</span></div>
+      </div>
+
+      <button class="button" id="boostBtn" type="button">Activate Nitro AI Boost ⚡</button>
+      <p class="footer" id="footer">Ready to become the engineer who builds the future.</p>
+    </section>
+  </main>
+
+  <div class="boss-mode" id="bossMode"><div>ASSER \(SIGMA\)<br>AI ENGINEER LEGEND 🏆</div></div>
+
+  <script>
+    const btn = document.getElementById("boostBtn");
+    const footer = document.getElementById("footer");
+    const bossMode = document.getElementById("bossMode");
+
+    btn.addEventListener("click", () => {
+      footer.textContent = "Nitro loaded. Neural network activated. Asphalt legend detected. 🚀";
+      footer.style.fontWeight = "900";
+      footer.style.color = "#ffffff";
+
+      bossMode.classList.remove("show");
+      void bossMode.offsetWidth;
+      bossMode.classList.add("show");
+
+      for (let i = 0; i < 4; i++) {
+        const car = document.createElement("div");
+        car.className = "nitro";
+        car.textContent = "🏎️💨";
+        car.style.setProperty("--top", (18 + Math.random() * 64) + "vh");
+        document.body.appendChild(car);
+        setTimeout(() => car.remove(), 1500);
+      }
+
+      for (let i = 0; i < 55; i++) {
+        const spark = document.createElement("div");
+        spark.className = "spark";
+        spark.textContent = ["⚡", "🔥", "✨", "🧠", "🏆", "💎"][Math.floor(Math.random() * 6)];
+        spark.style.left = "50vw";
+        spark.style.top = "50vh";
+        spark.style.fontSize = (17 + Math.random() * 22) + "px";
+        spark.style.setProperty("--x", (Math.random() * 760 - 380) + "px");
+        spark.style.setProperty("--y", (Math.random() * 760 - 380) + "px");
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 2000);
+      }
+    });
+  </script>
+</body>
+</html>
