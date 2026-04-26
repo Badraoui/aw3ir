@@ -63,6 +63,17 @@
       }
     }
 
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+
     .card {
       width: min(100%, 430px);
       padding: 34px 26px;
@@ -139,6 +150,10 @@
     }
 
     .button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -225,20 +240,38 @@
         </p>
       </div>
 
-      <a class="button" href="#" onclick="showLove(event)">
+      <button class="button" id="surpriseButton" type="button">
         Tap for a surprise ❤️
-      </a>
+      </button>
 
       <p class="footer" id="surprise">Forever grateful for you.</p>
     </section>
   </main>
 
   <script>
-    function showLove(event) {
-      event.preventDefault();
-      const text = document.getElementById("surprise");
-      text.textContent = "Yomna, you are loved more than words can say ❤️";
-    }
+    const button = document.getElementById("surpriseButton");
+    const surprise = document.getElementById("surprise");
+
+    button.addEventListener("click", function () {
+      surprise.textContent = "Yomna, you are loved more than words can say ❤️";
+      surprise.style.fontSize = "16px";
+      surprise.style.color = "#ffffff";
+      surprise.style.fontWeight = "700";
+
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("span");
+        heart.textContent = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-30px";
+        heart.style.fontSize = 18 + Math.random() * 18 + "px";
+        heart.style.animation = "floatUp 2.8s ease-out forwards";
+        heart.style.pointerEvents = "none";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 2800);
+      }
+    });
   </script>
 </body>
 </html>
