@@ -7,118 +7,269 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html, body { min-height: 100%; }
+
     body {
       min-height: 100vh;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Poppins, Arial, sans-serif;
       color: #fff;
-      background: linear-gradient(135deg, #2b1055, #7597de);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 214, 236, 0.55), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(255, 209, 102, 0.28), transparent 28%),
+        linear-gradient(135deg, #2b1055, #7597de);
       overflow-x: hidden;
     }
 
     .page {
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 22px;
       position: relative;
+      overflow: hidden;
     }
 
-    /* Floating hearts background */
-    .heart {
+    .sparkle {
       position: absolute;
-      font-size: 20px;
-      animation: float 8s linear infinite;
-      opacity: 0.6;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 18px #fff;
+      animation: twinkle 2.8s infinite ease-in-out alternate;
     }
+
+    .sparkle:nth-child(1) { top: 12%; left: 15%; }
+    .sparkle:nth-child(2) { top: 22%; right: 18%; animation-delay: .5s; }
+    .sparkle:nth-child(3) { bottom: 18%; left: 18%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { bottom: 28%; right: 13%; animation-delay: 1.5s; }
+    .sparkle:nth-child(5) { top: 48%; left: 8%; animation-delay: 2s; }
+    .sparkle:nth-child(6) { top: 58%; right: 8%; animation-delay: 2.4s; }
+
+    @keyframes twinkle {
+      from { transform: scale(.5); opacity: .25; }
+      to { transform: scale(1.8); opacity: 1; }
+    }
+
+    .heart-bg {
+      position: absolute;
+      bottom: -40px;
+      font-size: 24px;
+      opacity: .65;
+      animation: float 8s linear infinite;
+    }
+
+    .heart-bg:nth-of-type(7) { left: 8%; animation-delay: 0s; }
+    .heart-bg:nth-of-type(8) { left: 24%; animation-delay: 1.5s; font-size: 18px; }
+    .heart-bg:nth-of-type(9) { left: 44%; animation-delay: 3s; font-size: 28px; }
+    .heart-bg:nth-of-type(10) { left: 66%; animation-delay: .8s; font-size: 20px; }
+    .heart-bg:nth-of-type(11) { left: 86%; animation-delay: 2.5s; }
 
     @keyframes float {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-      20% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+      0% { transform: translateY(0) rotate(0deg) scale(.7); opacity: 0; }
+      15% { opacity: .9; }
+      100% { transform: translateY(-115vh) rotate(360deg) scale(1.5); opacity: 0; }
     }
 
-    /* Card */
     .card {
-      width: min(100%, 420px);
-      padding: 30px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(20px);
+      width: min(100%, 430px);
+      padding: 34px 26px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 30px 80px rgba(0,0,0,.32);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      animation: fadeIn 1.2s ease;
+      position: relative;
+      z-index: 5;
+      animation: entrance 1.2s ease both, cardGlow 3s ease-in-out infinite alternate;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes entrance {
+      from { opacity: 0; transform: translateY(35px) scale(.92); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes cardGlow {
+      from { box-shadow: 0 30px 80px rgba(0,0,0,.32); }
+      to { box-shadow: 0 30px 90px rgba(255, 158, 203, .45); }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 9px 16px;
+      margin-bottom: 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      font-size: 14px;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #fff; }
-      to { text-shadow: 0 0 25px #ff9ecb; }
+      font-size: clamp(40px, 11vw, 66px);
+      line-height: 1;
+      margin-bottom: 16px;
+      text-shadow: 0 0 28px rgba(255,255,255,.5);
     }
 
     .name {
       display: block;
-      font-size: 60px;
-      background: linear-gradient(90deg, #fff, #ffd6ec);
+      margin-top: 8px;
+      background: linear-gradient(90deg, #fff, #ffd6ec, #ffd166, #fff);
+      background-size: 300% 100%;
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
+      animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+      from { background-position: 0% 50%; }
+      to { background-position: 300% 50%; }
     }
 
     .message {
-      margin: 15px 0 25px;
-      line-height: 1.6;
-      font-size: 16px;
+      font-size: 16.5px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.9);
+      margin-bottom: 24px;
     }
 
     .button {
+      width: 100%;
       border: none;
-      padding: 14px 22px;
+      padding: 15px 22px;
       border-radius: 999px;
-      background: white;
+      background: #fff;
       color: #7b1f54;
-      font-weight: bold;
+      font-size: 16px;
+      font-weight: 800;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      box-shadow: 0 16px 35px rgba(255,255,255,.25);
+      animation: pulse 1.8s infinite;
     }
 
-    .button:hover { transform: scale(1.1); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
 
     .footer {
-      margin-top: 20px;
-      font-size: 14px;
-      opacity: 0.8;
+      margin-top: 22px;
+      min-height: 44px;
+      font-size: 15px;
+      opacity: .9;
+      transition: all .4s ease;
     }
 
-    /* Explosion hearts */
-    @keyframes explode {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(2.5) translateY(-100px); opacity: 0; }
+    .big-love {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      z-index: 20;
+      pointer-events: none;
+      background: rgba(43, 16, 85, .32);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .big-love.show { display: grid; animation: vanish 3s ease forwards; }
+
+    .big-love span {
+      font-size: clamp(38px, 12vw, 90px);
+      font-weight: 900;
+      text-shadow: 0 0 35px #fff;
+      animation: boom .8s ease both;
+    }
+
+    @keyframes boom {
+      from { transform: scale(.2) rotate(-8deg); opacity: 0; }
+      to { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes vanish {
+      0%, 75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .pop-heart {
+      position: fixed;
+      z-index: 30;
+      pointer-events: none;
+      animation: pop 2.2s ease-out forwards;
+    }
+
+    @keyframes pop {
+      from { transform: translate(-50%, -50%) scale(.4); opacity: 1; }
+      to { transform: translate(var(--x), var(--y)) scale(1.9) rotate(360deg); opacity: 0; }
     }
 
     @media (max-width: 430px) {
-      h1 { font-size: 40px; }
-      .name { font-size: 50px; }
+      .card { padding: 30px 21px; border-radius: 30px; }
+      .message { font-size: 16px; }
     }
   </style>
 </head>
 <body>
-  <main class="page" id="page"></main>
+  <main class="page">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+
+    <div class="heart-bg">❤️</div>
+    <div class="heart-bg">💖</div>
+    <div class="heart-bg">💕</div>
+    <div class="heart-bg">💘</div>
+    <div class="heart-bg">❤️</div>
+
+    <section class="card">
+      <div class="badge">✨ Made only for you ✨</div>
+      <h1>For <span class="name">Yomna</span></h1>
+      <p class="message">
+        You are my favorite person, my sweetest thought, and the most beautiful part of my life. This little page exists because you deserve something magical.
+      </p>
+      <button class="button" id="btn" type="button">Tap for a surprise ❤️</button>
+      <p class="footer" id="text">Forever grateful for you.</p>
+    </section>
+  </main>
+
+  <div class="big-love" id="bigLove"><span>Yomna ❤️</span></div>
 
   <script>
-    const page = document.getElementById("page");
+    const btn = document.getElementById("btn");
+    const text = document.getElementById("text");
+    const bigLove = document.getElementById("bigLove");
 
-    // Create floating hearts
-    for (let i = 0; i < 15; i++) {
-      const h = document.createElement("div");
-      h.className = "heart";
-      h.textCo
+    btn.addEventListener("click", function () {
+      text.textContent = "Yomna, you are the best thing that ever happened to me ❤️";
+      text.style.fontWeight = "800";
+      text.style.fontSize = "17px";
+
+      bigLove.classList.remove("show");
+      void bigLove.offsetWidth;
+      bigLove.classList.add("show");
+
+      for (let i = 0; i < 36; i++) {
+        const heart = document.createElement("div");
+        heart.className = "pop-heart";
+        heart.textContent = ["❤️", "💖", "💕", "💘", "✨"][Math.floor(Math.random() * 5)];
+        heart.style.left = "50vw";
+        heart.style.top = "50vh";
+        heart.style.fontSize = (18 + Math.random() * 22) + "px";
+        heart.style.setProperty("--x", (Math.random() * 700 - 350) + "px");
+        heart.style.setProperty("--y", (Math.random() * 700 - 350) + "px");
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 2300);
+      }
+    });
+  </script>
+</body>
+</html>
